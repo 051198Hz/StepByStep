@@ -11,7 +11,11 @@
 		E49AEDB52A00A2320083DE42 /* testCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49AEDB42A00A2320083DE42 /* testCell.swift */; };
 		E49AEDB82A00D6440083DE42 /* unCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = E49AEDB72A00D6440083DE42 /* unCheck.png */; };
 		E4D2A22D2A079943006C88BD /* addItemPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A22C2A079943006C88BD /* addItemPopupView.swift */; };
-		E4D2A22F2A07C44C006C88BD /* Routines.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A22E2A07C44C006C88BD /* Routines.swift */; };
+		E4D2A22F2A07C44C006C88BD /* RoutineStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A22E2A07C44C006C88BD /* RoutineStruct.swift */; };
+		E4D2A2312A08D992006C88BD /* TodoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A2302A08D992006C88BD /* TodoStruct.swift */; };
+		E4D2A2352A08DEF7006C88BD /* RoutineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A2342A08DEF7006C88BD /* RoutineCell.swift */; };
+		E4D2A2392A0A1202006C88BD /* TabviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A2382A0A1202006C88BD /* TabviewController.swift */; };
+		E4D2A23B2A0A1BDC006C88BD /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A23A2A0A1BDC006C88BD /* DB.swift */; };
 		E4D5F5222A008F640025C42A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F5212A008F640025C42A /* AppDelegate.swift */; };
 		E4D5F5242A008F640025C42A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F5232A008F640025C42A /* SceneDelegate.swift */; };
 		E4D5F5262A008F640025C42A /* RoutuneAndTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D5F5252A008F640025C42A /* RoutuneAndTodo.swift */; };
@@ -26,7 +30,11 @@
 		E49AEDB42A00A2320083DE42 /* testCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCell.swift; sourceTree = "<group>"; };
 		E49AEDB72A00D6440083DE42 /* unCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unCheck.png; sourceTree = "<group>"; };
 		E4D2A22C2A079943006C88BD /* addItemPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addItemPopupView.swift; sourceTree = "<group>"; };
-		E4D2A22E2A07C44C006C88BD /* Routines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routines.swift; sourceTree = "<group>"; };
+		E4D2A22E2A07C44C006C88BD /* RoutineStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStruct.swift; sourceTree = "<group>"; };
+		E4D2A2302A08D992006C88BD /* TodoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStruct.swift; sourceTree = "<group>"; };
+		E4D2A2342A08DEF7006C88BD /* RoutineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineCell.swift; sourceTree = "<group>"; };
+		E4D2A2382A0A1202006C88BD /* TabviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabviewController.swift; sourceTree = "<group>"; };
+		E4D2A23A2A0A1BDC006C88BD /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		E4D5F51E2A008F640025C42A /* StepByStep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StepByStep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D5F5212A008F640025C42A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4D5F5232A008F640025C42A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +83,24 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		E4D2A2322A08D99C006C88BD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				E4D2A2302A08D992006C88BD /* TodoStruct.swift */,
+				E4D2A22E2A07C44C006C88BD /* RoutineStruct.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		E4D2A2332A08DEDC006C88BD /* cell model */ = {
+			isa = PBXGroup;
+			children = (
+				E49AEDB42A00A2320083DE42 /* testCell.swift */,
+				E4D2A2342A08DEF7006C88BD /* RoutineCell.swift */,
+			);
+			path = "cell model";
+			sourceTree = "<group>";
+		};
 		E4D5F5152A008F640025C42A = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +123,8 @@
 		E4D5F5202A008F640025C42A /* StepByStep */ = {
 			isa = PBXGroup;
 			children = (
+				E4D2A2322A08D99C006C88BD /* model */,
+				E4D2A2332A08DEDC006C88BD /* cell model */,
 				E4D5F5212A008F640025C42A /* AppDelegate.swift */,
 				E4D5F5232A008F640025C42A /* SceneDelegate.swift */,
 				E4D5F5252A008F640025C42A /* RoutuneAndTodo.swift */,
@@ -104,9 +132,9 @@
 				E4D5F52A2A008F660025C42A /* Assets.xcassets */,
 				E4D5F52C2A008F660025C42A /* LaunchScreen.storyboard */,
 				E4D5F52F2A008F660025C42A /* Info.plist */,
-				E49AEDB42A00A2320083DE42 /* testCell.swift */,
 				E4D2A22C2A079943006C88BD /* addItemPopupView.swift */,
-				E4D2A22E2A07C44C006C88BD /* Routines.swift */,
+				E4D2A2382A0A1202006C88BD /* TabviewController.swift */,
+				E4D2A23A2A0A1BDC006C88BD /* DB.swift */,
 			);
 			path = StepByStep;
 			sourceTree = "<group>";
@@ -228,8 +256,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4D5F5262A008F640025C42A /* RoutuneAndTodo.swift in Sources */,
+				E4D2A2312A08D992006C88BD /* TodoStruct.swift in Sources */,
+				E4D2A2352A08DEF7006C88BD /* RoutineCell.swift in Sources */,
+				E4D2A23B2A0A1BDC006C88BD /* DB.swift in Sources */,
+				E4D2A2392A0A1202006C88BD /* TabviewController.swift in Sources */,
 				E4D2A22D2A079943006C88BD /* addItemPopupView.swift in Sources */,
-				E4D2A22F2A07C44C006C88BD /* Routines.swift in Sources */,
+				E4D2A22F2A07C44C006C88BD /* RoutineStruct.swift in Sources */,
 				E49AEDB52A00A2320083DE42 /* testCell.swift in Sources */,
 				E4D5F5222A008F640025C42A /* AppDelegate.swift in Sources */,
 				E4D5F5242A008F640025C42A /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.1.0)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - KakaoSDKAuth (2.13.1):
     - KakaoSDKCommon (= 2.13.1)
   - KakaoSDKCommon (2.13.1):
@@ -22,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 5.1)
+  - FMDB
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKShare
@@ -32,6 +36,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FMDB
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKShare
@@ -41,6 +46,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   KakaoSDKAuth: d9de0cb0c723441ced3616d481952bde34438dcb
   KakaoSDKCommon: a16807e19984a0a208c3117c7ef117f101a9a128
   KakaoSDKShare: c5d7f1cf9dc38a0a084892f3cab3469c3a8a789d
@@ -48,6 +54,6 @@ SPEC CHECKSUMS:
   KakaoSDKTemplate: 9732b6123946efd1dbafacd0e807ac76c1b3d71c
   KakaoSDKUser: 92d34cf6af7b123c22a7ee44424332123e356901
 
-PODFILE CHECKSUM: 7ac35c378ddbd1032b85654e6d9dd925cd704c5f
+PODFILE CHECKSUM: 9905acf8af23e140ba6c752594acef706ddf5ceb
 
 COCOAPODS: 1.11.3
