@@ -58,26 +58,26 @@ class DAO: NSObject {
             return
         }
         do {
-            try database.executeUpdate("create table IF NOT EXISTS RoutineItem(day TEXT PRIMARY, name TEXT, discription TEXT, date text, start_time TEXT, end_time TEXT)", values: nil)
+            try database.executeUpdate("create table IF NOT EXISTS RoutineItem(day TEXT, name TEXT, discription TEXT, date text, start_time TEXT, end_time TEXT)", values: nil)
             // 입력시 사용될 녀석.
 //            try database.executeUpdate("insert into info (order_num, badge, date, plus_one, title) values (?, ?, ?, ?, ?)", values: ["1", true, "2012-05-31", true, "사귄날"])
             try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: ["test", "test", "test", "test", "test", "test" ])
 //
-            let rs = try database.executeQuery("select * from info", values: nil)
+            let rs = try database.executeQuery("select * from RoutineItem", values: nil)
             while rs.next() {
-                let day = rs.int(forColumn: "day")
-                let name = rs.int(forColumn:"name")
-                let discription = rs.bool(forColumn: "discription")
+                let day = rs.string(forColumn: "day")
+                let name = rs.string(forColumn:"name")
+                let discription = rs.string(forColumn: "ßdiscription")
                 let date = rs.string(forColumn: "date")
-                let start_time = rs.bool(forColumn: "start_time")
+                let start_time = rs.string(forColumn: "start_time")
                 let end_time = rs.string(forColumn: "end_time")
                 
                 print("================")
-                print("day = \(day)")
-                print("name = \(name)")
-                print("discription = \(discription)")
+                print("day = \(day!)")
+                print("name = \(name!)")
+                print("discription = \(discription!)")
                 print("date = \(date!)")
-                print("start_time = \(start_time)")
+                print("start_time = \(start_time!)")
                 print("end_time = \(end_time!)")
             }
         } catch {
