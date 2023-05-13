@@ -18,6 +18,7 @@ class RoutineCell: UITableViewCell {
     @IBOutlet var routineTimeLabel: UILabel!
     
     @IBOutlet var deleteItemBtn: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

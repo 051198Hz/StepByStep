@@ -313,7 +313,7 @@
                                         </prototypes>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="frh-kV-TOT">
-                                        <rect key="frame" x="20.5" y="140" width="271" height="134"/>
+                                        <rect key="frame" x="20.5" y="140" width="288" height="134"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wOF-d9-eB3">
                                                 <rect key="frame" x="0.0" y="0.0" width="154.5" height="34"/>
@@ -354,7 +354,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="l6i-Ib-Q9T">
-                                                <rect key="frame" x="0.0" y="84" width="271" height="50"/>
+                                                <rect key="frame" x="0.0" y="84" width="288" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNL-Mz-dh7">
                                                         <rect key="frame" x="0.0" y="0.0" width="42.5" height="50"/>
@@ -367,16 +367,16 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="7Q3-Z6-f1a">
-                                                        <rect key="frame" x="62.5" y="0.0" width="79" height="50"/>
+                                                        <rect key="frame" x="62.5" y="0.0" width="87.5" height="50"/>
                                                     </datePicker>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tv9-fW-eOs">
-                                                        <rect key="frame" x="161.5" y="0.0" width="10.5" height="50"/>
+                                                        <rect key="frame" x="170" y="0.0" width="10.5" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="2qw-0N-o0n">
-                                                        <rect key="frame" x="192" y="0.0" width="79" height="50"/>
+                                                        <rect key="frame" x="200.5" y="0.0" width="87.5" height="50"/>
                                                     </datePicker>
                                                 </subviews>
                                             </stackView>
@@ -490,7 +490,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCF-eK-abg">
-                                        <rect key="frame" x="114" y="282" width="84" height="35"/>
+                                        <rect key="frame" x="114" y="282" width="101" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="DEr-EQ-MOl"/>
                                         </constraints>
@@ -507,11 +507,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="저장"/>
+                                                <connections>
+                                                    <action selector="saveBtnPressed:" destination="iWL-vE-0vn" eventType="touchUpInside" id="B6b-IG-3Zp"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvn-L0-uqL">
                                                 <rect key="frame" x="55.5" y="0.0" width="48.5" height="31"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="취소"/>
+                                                <connections>
+                                                    <action selector="cancelBtnPressed:" destination="iWL-vE-0vn" eventType="touchUpInside" id="eEU-5W-TSq"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

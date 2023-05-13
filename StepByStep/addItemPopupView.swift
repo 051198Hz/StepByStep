@@ -46,6 +46,7 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
     var indexOfOneAndOnlySelectedBtn: Int?
     var check = 0
     var data : Routine?
+    var DB = DAO.shareInstance()
 
 
     override func viewDidLoad() {
@@ -54,7 +55,7 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
         ItemTable.dataSource = self
         
 
-        acceptBtn.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        //acceptBtn.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         for index in DayBtns.indices {
             DayBtns[index].layer.borderWidth = 1.0
@@ -66,6 +67,9 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func cancelBtnPressed(_ sender: Any) {
+        dismissView()
+    }
     @objc func dismissView(){
         dismiss(animated: false, completion: nil)
     }
@@ -106,8 +110,13 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             let start = startTime,
             let endTime = endTime,
             let day =  DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text{
+            
+            
             //let routines : Routine = Routine.init( Routine: [ RoutineItem.init(itemName: itemNametext, itemDisc: itemDisc, start: start.toString(), end: endTime.toString()), RoutineItem.init(itemName: itemNametext, itemDisc: itemDisc, start: start.toString(), end: endTime.toString()) ] , day : day)
             //data = routines
+            
+            //DB.insertRoutine(day, itemNametext, itemDisc, start.toString(), endTime.toString())
+            
             let item : RoutineItem = RoutineItem.init(
                 itemName: itemNametext,
                 itemDisc: itemDisc,
@@ -133,6 +142,36 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
              }
         }
     }
+    
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        
+        
+        if( indexOfOneAndOnlySelectedBtn == nil){
+            let alert = UIAlertController(title: "알림", message: "요일을 선택하세요", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default) { [self] action in
+            })
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        
+        for item  in ItemTable.visibleCells {
+            let itemCell = (item as! RoutineCell)
+                if let itemNametext = itemCell.routineItemNameLabel.text,
+                    let itemDisc = itemCell.routineItemDiscLabel.text,
+                    let time =  itemCell.routineTimeLabel.text?.split(separator: ":"),
+                    let day = DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text
+                {
+                    DB.insertRoutine(day, itemNametext, itemDisc, String(time[0]), String(time[1]))
+                    }
+            }
+        
+        DB.getRoutine((DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text)!)
+            
+        
+        dismissView()
+    }
+    
     
     func postTest(_ data : Data){
         //let urlString = "http://10.2.12.85:8080/"

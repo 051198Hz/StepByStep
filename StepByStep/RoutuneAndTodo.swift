@@ -21,9 +21,13 @@ class RoutineAndTodo: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var delBoxShowBtn: UIButton!
     
     @IBOutlet var addItemBtn: UIButton!
+    
     var indexOfOneAndOnlySelectedBtn: Int?
     var check = 0
     var delBtnChecked : Bool = false
+    
+    var DB = DAO.shareInstance()
+    var routine : Routine?
     
     let sample = [
         ["mouse","wallet","letsbe","phone"],
@@ -32,6 +36,7 @@ class RoutineAndTodo: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DB.delete()
         // Do any additional setup after loading the view.
         currentTavleView = 0
         
@@ -125,12 +130,23 @@ class RoutineAndTodo: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let routine = routine{
+            return routine.Routine.count
+        }
         return sample[currentTavleView].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        
         let cell = RoutuneAndTodoTable.dequeueReusableCell(withIdentifier: "testCell") as! testCell
         cell.label.text = sample[currentTavleView][indexPath.row]
+
+        if let routine = routine{
+            cell.label.text = routine.Routine[indexPath.row].itemName
+
+        }
         
         return cell
     }
@@ -144,6 +160,7 @@ class RoutineAndTodo: UIViewController, UITableViewDataSource, UITableViewDelega
                 sender.isSelected = true
                 indexOfOneAndOnlySelectedBtn = DayBtns.firstIndex(of: sender)
                 check = sender.tag
+
             } else {
                 sender.isSelected = false
                 indexOfOneAndOnlySelectedBtn = nil
@@ -155,8 +172,15 @@ class RoutineAndTodo: UIViewController, UITableViewDataSource, UITableViewDelega
             indexOfOneAndOnlySelectedBtn = DayBtns.firstIndex(of: sender)
             check = sender.tag
         }
+        if(sender.isSelected){
+            print("요일 선택됨")
+            routine = DB.getRoutine((DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text)!)
+            print(routine)
+            RoutuneAndTodoTable.reloadData()
+        }
         print(sender.isSelected, indexOfOneAndOnlySelectedBtn ?? 0)
         print("check: \(check)")
+        
     }
     
     func kakaoLogin(){
@@ -406,9 +430,6 @@ class testView: UIView {
 //            startAngle += endAngle
         }
     }
-
-
-
 /// 체크박스
 class CheckBox: UIButton {
 

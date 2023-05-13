@@ -15,7 +15,7 @@ class DAO: NSObject {
         static var instance: DAO?
     }
     // 1. FMDB 정의
-    var db:FMDatabase!
+    var database:FMDatabase!
     let fileManager:FileManager = FileManager.default
     
     //MARK:-
@@ -25,12 +25,208 @@ class DAO: NSObject {
             staticInstance.instance = DAO()
             staticInstance.instance?.initData()
         }
-        
         return staticInstance.instance!
     }
     
     //MARK:-
     //MARK:- 1. 기본적인 데이터를 확인하고 생성한다.
+    func insertRoutines(){
+        
+    }
+    
+    func insertRoutine(_ day : String, _ name : String, _ discription : String, _ start_time : String, _ end_time : String){
+        guard database.open() else {
+            print("Unable to open database")
+            return
+        }
+        do {
+            //database.executeUpdate는 next필요없음
+            //database.executeQuerys는 next필요함
+            try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: [day, name, discription, "test2", start_time, end_time ])
+
+//            let rs = try database.executeQuery("select * from RoutineItem", values: nil)
+//
+//            while rs.next() {
+//                let day = rs.string(forColumn: "day")
+//                let name = rs.string(forColumn:"name")
+//                let discription = rs.string(forColumn: "discription")
+//                let date = rs.string(forColumn: "date")
+//                let start_time = rs.string(forColumn: "start_time")
+//                let end_time = rs.string(forColumn: "end_time")
+//
+//                print("================")
+//                print("day = \(day!)")
+//                print("name = \(name!)")
+//                print("discription = \(discription!)")
+//                print("date = \(date!)")
+//                print("start_time = \(start_time!)")
+//                print("end_time = \(end_time!)")
+//            }
+            
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        print("insert routine complete")
+        database.close()
+    }
+    
+    
+    func getRoutines(){
+        
+    }
+    
+    func getRoutine(_ day : String) -> Routine{
+        let nilitem : RoutineItem = RoutineItem.init(
+            itemName: "루틴을 추가해 주세요",
+            itemDisc: "⁉️",
+            start: "00",
+            end: "00")
+        let nilday = day
+        
+        let nilRoutine = Routine(Routine: [nilitem], day: nilday)
+        
+        var tmp : Routine? = nil
+
+        guard database.open() else {
+            print("Unable to open database")
+            return tmp!
+        }
+        do{
+        let rs = try database.executeQuery("select * from RoutineItem where day = ?",  values: [day])
+            
+            
+        while rs.next(){
+            let day = rs.string(forColumn: "day")
+            let name = rs.string(forColumn:"name")
+            let discription = rs.string(forColumn: "discription")
+            let date = rs.string(forColumn: "date")
+            let start_time = rs.string(forColumn: "start_time")
+            let end_time = rs.string(forColumn: "end_time")
+            
+            let item : RoutineItem = RoutineItem.init(
+                itemName: name!,
+                itemDisc: discription!,
+                start: start_time!,
+                end: end_time!)
+
+            if(tmp == nil){
+                tmp = Routine(Routine: [item], day: day!)
+            }else{
+                tmp?.day = day!
+                tmp?.Routine.append(item)
+            }
+            
+//            let item : RoutineItem = RoutineItem.init(
+//                itemName: name!,
+//                itemDisc: discription!,
+//                start: start_time!,
+//                end: end_time!)
+//
+//            if(tmp == nil){
+//                tmp = Routine(Routine: [item], day: day!)
+//            }else{
+//                tmp?.day = day!
+//                tmp?.Routine.append(item)
+//            }
+            
+            
+            print("================")
+            print("day = \(day!)")
+            print("name = \(name!)")
+            print("discription = \(discription!)")
+            print("date = \(date!)")
+            print("start_time = \(start_time!)")
+            print("end_time = \(end_time!)")
+            
+        }
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        database.close()
+        if let tmp = tmp {
+            return tmp
+        }else{
+            return nilRoutine
+        }
+    }
+    
+    
+    func delete(){
+        guard database.open() else {
+            print("Unable to open database")
+            return
+        }
+        
+        do {
+           
+            try database.executeUpdate("delete from RoutineItem", values: nil)
+            //database.executeUpdate는 next필요없음
+            //database.executeQuerys는 next필요함
+            //try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: ["test2", "test2", "test2", "test2", "test2", "test2" ])
+            
+            try database.executeUpdate("delete from RoutineItem", values: nil)
+
+            let rs = try database.executeQuery("select * from RoutineItem", values: nil)
+
+            while rs.next() {
+                let day = rs.string(forColumn: "day")
+                let name = rs.string(forColumn:"name")
+                let discription = rs.string(forColumn: "discription")
+                let date = rs.string(forColumn: "date")
+                let start_time = rs.string(forColumn: "start_time")
+                let end_time = rs.string(forColumn: "end_time")
+
+                print("================")
+                print("day = \(day!)")
+                print("name = \(name!)")
+                print("discription = \(discription!)")
+                print("date = \(date!)")
+                print("start_time = \(start_time!)")
+                print("end_time = \(end_time!)")
+            }
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        database.close()
+    }
+    
+    func test_DBconnect(){
+        guard database.open() else {
+            print("Unable to open database")
+            return
+        }
+        
+        do {
+            try database.executeUpdate("create table IF NOT EXISTS RoutineItem(day TEXT, name TEXT, discription TEXT, date text, start_time TEXT, end_time TEXT)", values: nil)
+            // 입력시 사용될 녀석.
+//            try database.executeUpdate("insert into info (order_num, badge, date, plus_one, title) values (?, ?, ?, ?, ?)", values: ["1", true, "2012-05-31", true, "사귄날"])
+            try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: ["test", "test", "test", "test", "test", "test" ])
+//
+            let rs = try database.executeQuery("select * from RoutineItem", values: nil)
+            
+            while rs.next() {
+                let day = rs.string(forColumn: "day")
+                let name = rs.string(forColumn:"name")
+                let discription = rs.string(forColumn: "discription")
+                let date = rs.string(forColumn: "date")
+                let start_time = rs.string(forColumn: "start_time")
+                let end_time = rs.string(forColumn: "end_time")
+                
+                print("================")
+                print("day = \(day!)")
+                print("name = \(name!)")
+                print("discription = \(discription!)")
+                print("date = \(date!)")
+                print("start_time = \(start_time!)")
+                print("end_time = \(end_time!)")
+            }
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        
+        database.close()
+    }
+    
     func initData() {
         // 1. doc 폴더 만들기.
         let documentsPath1 = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
@@ -51,39 +247,7 @@ class DAO: NSObject {
         // 이렇게 만들지 않은 상태에서 URL 로 생성 하니
         // 없으면 자동으로 생성해서 열어주고
         // 있으면 있는거 열어줌.
-        let database = FMDatabase(url: fileURL)
+        database = FMDatabase(url: fileURL)
         
-        guard database.open() else {
-            print("Unable to open database")
-            return
-        }
-        do {
-            try database.executeUpdate("create table IF NOT EXISTS RoutineItem(day TEXT, name TEXT, discription TEXT, date text, start_time TEXT, end_time TEXT)", values: nil)
-            // 입력시 사용될 녀석.
-//            try database.executeUpdate("insert into info (order_num, badge, date, plus_one, title) values (?, ?, ?, ?, ?)", values: ["1", true, "2012-05-31", true, "사귄날"])
-            try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: ["test", "test", "test", "test", "test", "test" ])
-//
-            let rs = try database.executeQuery("select * from RoutineItem", values: nil)
-            while rs.next() {
-                let day = rs.string(forColumn: "day")
-                let name = rs.string(forColumn:"name")
-                let discription = rs.string(forColumn: "ßdiscription")
-                let date = rs.string(forColumn: "date")
-                let start_time = rs.string(forColumn: "start_time")
-                let end_time = rs.string(forColumn: "end_time")
-                
-                print("================")
-                print("day = \(day!)")
-                print("name = \(name!)")
-                print("discription = \(discription!)")
-                print("date = \(date!)")
-                print("start_time = \(start_time!)")
-                print("end_time = \(end_time!)")
-            }
-        } catch {
-            print("failed: \(error.localizedDescription)")
-        }
-        
-        database.close()
     }
 }

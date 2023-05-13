@@ -18,6 +18,8 @@ class TabviewController: UITabBarController {
     
     func openDB(){
         let DB : DAO = DAO.shareInstance()
+        //DB.test_DBconnect()
+        DB.delete()
     }
     
     /*
