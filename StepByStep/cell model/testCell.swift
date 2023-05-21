@@ -12,7 +12,9 @@ class testCell: UITableViewCell {
     @IBOutlet var delCehckBox: CheckBox!
     
     @IBOutlet var label: UILabel!
-    
+    @IBOutlet var discLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         delCehckBox.isChecked = false

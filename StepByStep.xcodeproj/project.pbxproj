@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7265C416937604D2D08DC7C5 /* Pods_StepByStep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE06F99FED4DC75B7B79E265 /* Pods_StepByStep.framework */; };
+		E4465C512A12631D00827CF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4465C502A12631D00827CF9 /* ViewController.swift */; };
 		E49AEDB52A00A2320083DE42 /* testCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49AEDB42A00A2320083DE42 /* testCell.swift */; };
 		E49AEDB82A00D6440083DE42 /* unCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = E49AEDB72A00D6440083DE42 /* unCheck.png */; };
 		E4D2A22D2A079943006C88BD /* addItemPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A22C2A079943006C88BD /* addItemPopupView.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		304188DB4961C71579FC5110 /* Pods-StepByStep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StepByStep.release.xcconfig"; path = "Target Support Files/Pods-StepByStep/Pods-StepByStep.release.xcconfig"; sourceTree = "<group>"; };
 		AE06F99FED4DC75B7B79E265 /* Pods_StepByStep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StepByStep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4465C502A12631D00827CF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E49AEDB42A00A2320083DE42 /* testCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCell.swift; sourceTree = "<group>"; };
 		E49AEDB72A00D6440083DE42 /* unCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unCheck.png; sourceTree = "<group>"; };
 		E4D2A22C2A079943006C88BD /* addItemPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addItemPopupView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		E4D5F5152A008F640025C42A = {
 			isa = PBXGroup;
 			children = (
+				E4465C502A12631D00827CF9 /* ViewController.swift */,
 				E49AEDB62A00D5E40083DE42 /* assets */,
 				E4D5F5202A008F640025C42A /* StepByStep */,
 				E4D5F51F2A008F640025C42A /* Products */,
@@ -259,6 +262,7 @@
 				E4D2A2312A08D992006C88BD /* TodoStruct.swift in Sources */,
 				E4D2A2352A08DEF7006C88BD /* RoutineCell.swift in Sources */,
 				E4D2A23B2A0A1BDC006C88BD /* DB.swift in Sources */,
+				E4465C512A12631D00827CF9 /* ViewController.swift in Sources */,
 				E4D2A2392A0A1202006C88BD /* TabviewController.swift in Sources */,
 				E4D2A22D2A079943006C88BD /* addItemPopupView.swift in Sources */,
 				E4D2A22F2A07C44C006C88BD /* RoutineStruct.swift in Sources */,

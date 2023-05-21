@@ -54,13 +54,14 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
         ItemTable.delegate = self
         ItemTable.dataSource = self
         
-
-        //acceptBtn.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
+        //acceptBtn.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        setDay()
         for index in DayBtns.indices {
             DayBtns[index].layer.borderWidth = 1.0
             DayBtns[index].layer.borderColor = UIColor.lightGray.cgColor
             DayBtns[index].circleButton = true
+            DayBtns[index].isUserInteractionEnabled = false
             //            DayBtns[index].setBackgroundImage(UIImage(named: "unCheck"), for: .selected)
             //DayBtns[index].setBackgroundImage(UIImage(named: "Check"), for: .normal)
         }
@@ -72,6 +73,10 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
     }
     @objc func dismissView(){
         dismiss(animated: false, completion: nil)
+    }
+    
+    func setDay(){
+        DayBtns[indexOfOneAndOnlySelectedBtn!].isSelected = true
     }
     
     @IBAction func selectDay(_ sender: UIButton) {
@@ -106,7 +111,7 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             return
         }
         if let itemNametext = itemNameText.text,
-            let itemDisc = itemNameText.text,
+            let itemDisc = itemDiscText.text,
             let start = startTime,
             let endTime = endTime,
             let day =  DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text{
@@ -114,7 +119,6 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             
             //let routines : Routine = Routine.init( Routine: [ RoutineItem.init(itemName: itemNametext, itemDisc: itemDisc, start: start.toString(), end: endTime.toString()), RoutineItem.init(itemName: itemNametext, itemDisc: itemDisc, start: start.toString(), end: endTime.toString()) ] , day : day)
             //data = routines
-            
             //DB.insertRoutine(day, itemNametext, itemDisc, start.toString(), endTime.toString())
             
             let item : RoutineItem = RoutineItem.init(
@@ -135,6 +139,9 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             //ItemTable.rowHeight = UITableView.automaticDimension
             //ItemTable.estimatedRowHeight = UITableView.automaticDimension
             print("data = ", data)
+            itemDiscText.text = ""
+            itemNameText.text = ""
+            
             //아이템을 서버로 전송
              if let data = try? JSONEncoder().encode(data) {
                  print("data = \(String(decoding: data, as: UTF8.self))")
@@ -159,7 +166,7 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             let itemCell = (item as! RoutineCell)
                 if let itemNametext = itemCell.routineItemNameLabel.text,
                     let itemDisc = itemCell.routineItemDiscLabel.text,
-                    let time =  itemCell.routineTimeLabel.text?.split(separator: ":"),
+                    let time =  itemCell.routineTimeLabel.text?.split(separator: "~"),
                     let day = DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text
                 {
                     DB.insertRoutine(day, itemNametext, itemDisc, String(time[0]), String(time[1]))
@@ -167,9 +174,11 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             }
         
         DB.getRoutine((DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text)!)
-            
+        let preVC = self.presentingViewController
         
-        dismissView()
+        guard let vc = preVC as? RoutineAndTodo else{return}
+        vc.getRoutine_reload()
+        self.presentingViewController?.dismiss(animated: true)
     }
     
     
