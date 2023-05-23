@@ -59,7 +59,7 @@ class DAO: NSObject {
         
     }
     
-    func insertRoutine(_ day : String, _ name : String, _ discription : String, _ start_time : String, _ end_time : String){
+    func insertRoutineItem(_ day : String, _ name : String, _ discription : String, _ start_time : String, _ end_time : String){
         guard database.open() else {
             print("Unable to open database")
             return
@@ -96,8 +96,46 @@ class DAO: NSObject {
     }
     
     
-    func getRoutines(){
+    func getRoutineItem(_ day : String, _ name : String, _ discription : String, _ start_time : String, _ end_time : String){
         
+    }
+    
+    func updateRoutineItem(_ day : String, _ name : String, _ disc : String, _ nameRp : String, _ discRp : String, _ Start : String, _ End : String){
+        guard database.open() else {
+            print("Unable to open database")
+            return
+        }
+        do {
+            //database.executeUpdate는 next필요없음
+            //database.executeQuerys는 next필요함
+            try database.executeUpdate("update RoutineItem set name = ?, discription = ? , start_time = ?, end_time = ? where day = ? AND name = ? AND discription = ?", values : [nameRp, discRp, Start, End, day, name, disc ])
+            
+            //            let rs = try database.executeQuery("select * from RoutineItem", values: nil)
+            //
+            //            while rs.next() {
+            //                let day = rs.string(forColumn: "day")
+            //                let name = rs.string(forColumn:"name")
+            //                let discription = rs.string(forColumn: "discription")
+            //                let date = rs.string(forColumn: "date")
+            //                let start_time = rs.string(forColumn: "start_time")
+            //                let end_time = rs.string(forColumn: "end_time")
+            //
+            //                print("================")
+            //                print("day = \(day!)")
+            //                print("name = \(name!)")
+            //                print("discription = \(discription!)")
+            //                print("date = \(date!)")
+            //                print("start_time = \(start_time!)")
+            //                print("end_time = \(end_time!)")
+            //            }
+            
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        print("insert routine complete")
+        database.close()
+        
+
     }
     
     func getRoutine(_ day : String) -> Routine{
@@ -117,7 +155,7 @@ class DAO: NSObject {
             return tmp!
         }
         do{
-            let rs = try database.executeQuery("select * from RoutineItem where day = ?",  values: [day])
+            let rs = try database.executeQuery("select * from RoutineItem where day = ? order by start_time ASC ",  values: [day])
             
             
             while rs.next(){
@@ -204,7 +242,7 @@ class DAO: NSObject {
             try database.executeUpdate("create table IF NOT EXISTS RoutineItem(day TEXT, name TEXT, discription TEXT, date text, start_time TEXT, end_time TEXT)", values: nil)
             // 입력시 사용될 녀석.
             //            try database.executeUpdate("insert into info (order_num, badge, date, plus_one, title) values (?, ?, ?, ?, ?)", values: ["1", true, "2012-05-31", true, "사귄날"])
-            try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: ["test", "test", "test", "test", "test", "test" ])
+            //try database.executeUpdate("insert into RoutineItem (day, name, discription, date, start_time, end_time ) values (?, ?, ?, ?, ?, ?)", values: ["test", "test", "test", "test", "test", "test" ])
             //
             let rs = try database.executeQuery("select * from RoutineItem", values: nil)
             

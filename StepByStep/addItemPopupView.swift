@@ -16,21 +16,6 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
     
     let serverIP = "http://182.214.25.240:8080/"
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = data?.Routine.count{
-            return count
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ItemTable.dequeueReusableCell(withIdentifier: "RoutineCell") as! RoutineCell
-        cell.routineItemNameLabel.text = data?.Routine[indexPath.row].itemName
-        cell.routineItemDiscLabel.text = data?.Routine[indexPath.row].itemDisc
-        cell.routineTimeLabel.text = (data?.Routine[indexPath.row].start)! + " ~ " + (data?.Routine[indexPath.row].end)!
-        return cell
-    }
-    
 
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet var DayBtns: [UIButton]!
@@ -53,8 +38,6 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
         super.viewDidLoad()
         ItemTable.delegate = self
         ItemTable.dataSource = self
-        
-        
         //acceptBtn.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         setDay()
         for index in DayBtns.indices {
@@ -66,6 +49,22 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             //DayBtns[index].setBackgroundImage(UIImage(named: "Check"), for: .normal)
         }
         // Do any additional setup after loading the view.
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let count = data?.Routine.count{
+            return count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ItemTable.dequeueReusableCell(withIdentifier: "RoutineCell") as! RoutineCell
+        cell.routineItemNameLabel.text = data?.Routine[indexPath.row].itemName
+        cell.routineItemDiscLabel.text = data?.Routine[indexPath.row].itemDisc
+        cell.routineTimeLabel.text = (data?.Routine[indexPath.row].start)! + "~" + (data?.Routine[indexPath.row].end)!
+        return cell
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
@@ -145,7 +144,7 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
             //아이템을 서버로 전송
              if let data = try? JSONEncoder().encode(data) {
                  print("data = \(String(decoding: data, as: UTF8.self))")
-                 postTest(data)
+                 //postTest(data)
              }
         }
     }
@@ -169,16 +168,17 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
                     let time =  itemCell.routineTimeLabel.text?.split(separator: "~"),
                     let day = DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text
                 {
-                    DB.insertRoutine(day, itemNametext, itemDisc, String(time[0]), String(time[1]))
+                    DB.insertRoutineItem(day, itemNametext, itemDisc, String(time[0]), String(time[1]))
                     }
             }
         
-        DB.getRoutine((DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text)!)
-        let preVC = self.presentingViewController
+//        DB.getRoutine((DayBtns[indexOfOneAndOnlySelectedBtn!].titleLabel?.text)!)
+//        let preVC = self.presentingViewController
+//
+//        guard let vc = preVC as? RoutineAndTodo else{return}
+//        vc.getRoutine_reload()
+        dismissView()
         
-        guard let vc = preVC as? RoutineAndTodo else{return}
-        vc.getRoutine_reload()
-        self.presentingViewController?.dismiss(animated: true)
     }
     
     
@@ -209,42 +209,32 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
                     print("userProfile",userProfile)
                     print("userEmail",userEmail)
                     
-                    AF.request(urlString,
-                               method: .post,
-                               parameters: parameters
-                    ).responseString { (response) in
-                        /*
-                         switch response.result {
-                         case .success:
+                        AF.request(urlString,
+                                   method: .post,
+                                   parameters: parameters
+                        ).responseString { (response) in
+                            /*
+                             switch response.result {
+                             case .success:
                              print("POST 성공")
-                         case .failure(let error):
+                             case .failure(let error):
                              print("error : \(error.errorDescription!)")
-                         }
-                         */
-                        if let JsonParsedData = response.value{
-                            //self.posts = JsonParsedData
-                            print("json result : ", JsonParsedData)
-                            //self.FeedTable.reloadData()
+                             }
+                             */
+                            if let JsonParsedData = response.value{
+                                //self.posts = JsonParsedData
+                                print("json result : ", JsonParsedData)
+                                //self.FeedTable.reloadData()
+                            }
+                            
                         }
-
-                    }
+                    
                     
                     //self.postTest(profileImg: userProfile, email: userEmail)
                 }
                 
             }
         }
-
-        
-        // POST 로 보낼 정보
-        
-        // httpBody 에 parameters 추가
-//        do {
-//            try //JSONSerialization.data( withJSONObject : data, options: [])
-//        } catch {
-//            print("http Body Error")
-//        }
-        
     }
     
 }
@@ -252,6 +242,7 @@ class AddItemPopupView: UIViewController, UITableViewDataSource, UITableViewDele
 extension UIDatePicker {
     func toString() -> String {
         let formatter3 = DateFormatter()
+        formatter3.locale = Locale(identifier: "en")
         formatter3.dateFormat = "HH:mm"
         return formatter3.string(from: self.date)
     }

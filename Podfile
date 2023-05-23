@@ -14,4 +14,5 @@ pod 'KakaoSDKTalk'
 pod 'KakaoSDKShare' 
 pod 'KakaoSDKTemplate'
 pod 'FMDB'
+pod 'Charts'
 end

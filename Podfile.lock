@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (5.1.0)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -22,9 +26,11 @@ PODS:
     - KakaoSDKCommon/Common (= 2.13.1)
   - KakaoSDKUser (2.13.1):
     - KakaoSDKAuth (= 2.13.1)
+  - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
   - Alamofire (= 5.1)
+  - Charts
   - FMDB
   - KakaoSDKAuth
   - KakaoSDKCommon
@@ -36,6 +42,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - FMDB
     - KakaoSDKAuth
     - KakaoSDKCommon
@@ -43,9 +50,11 @@ SPEC REPOS:
     - KakaoSDKTalk
     - KakaoSDKTemplate
     - KakaoSDKUser
+    - SwiftAlgorithms
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   KakaoSDKAuth: d9de0cb0c723441ced3616d481952bde34438dcb
   KakaoSDKCommon: a16807e19984a0a208c3117c7ef117f101a9a128
@@ -53,7 +62,8 @@ SPEC CHECKSUMS:
   KakaoSDKTalk: 4e43ecb1484191783bf7439da536be8677a0619b
   KakaoSDKTemplate: 9732b6123946efd1dbafacd0e807ac76c1b3d71c
   KakaoSDKUser: 92d34cf6af7b123c22a7ee44424332123e356901
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 9905acf8af23e140ba6c752594acef706ddf5ceb
+PODFILE CHECKSUM: 798121cd86543d47d755519541ae3a12e53f152b
 
 COCOAPODS: 1.11.3
