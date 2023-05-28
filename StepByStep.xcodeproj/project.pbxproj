@@ -10,6 +10,8 @@
 		7265C416937604D2D08DC7C5 /* Pods_StepByStep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE06F99FED4DC75B7B79E265 /* Pods_StepByStep.framework */; };
 		DF814D952A19FF2A002A4197 /* EditItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF814D942A19FF2A002A4197 /* EditItemVC.swift */; };
 		E4465C512A12631D00827CF9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4465C502A12631D00827CF9 /* ViewController.swift */; };
+		E48E9D7F2A22E8EB00954A6D /* IphoneMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48E9D7E2A22E8EB00954A6D /* IphoneMain.storyboard */; };
+		E48E9D812A22E8F600954A6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48E9D802A22E8F600954A6D /* LaunchScreen.storyboard */; };
 		E49AEDB52A00A2320083DE42 /* testCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49AEDB42A00A2320083DE42 /* testCell.swift */; };
 		E49AEDB82A00D6440083DE42 /* unCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = E49AEDB72A00D6440083DE42 /* unCheck.png */; };
 		E4D2A22D2A079943006C88BD /* addItemPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2A22C2A079943006C88BD /* addItemPopupView.swift */; };
@@ -31,6 +33,8 @@
 		AE06F99FED4DC75B7B79E265 /* Pods_StepByStep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StepByStep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF814D942A19FF2A002A4197 /* EditItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemVC.swift; sourceTree = "<group>"; };
 		E4465C502A12631D00827CF9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E48E9D7E2A22E8EB00954A6D /* IphoneMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IphoneMain.storyboard; sourceTree = "<group>"; };
+		E48E9D802A22E8F600954A6D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E49AEDB42A00A2320083DE42 /* testCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCell.swift; sourceTree = "<group>"; };
 		E49AEDB72A00D6440083DE42 /* unCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unCheck.png; sourceTree = "<group>"; };
 		E4D2A22C2A079943006C88BD /* addItemPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addItemPopupView.swift; sourceTree = "<group>"; };
@@ -134,9 +138,11 @@
 				E4D5F5212A008F640025C42A /* AppDelegate.swift */,
 				E4D5F5232A008F640025C42A /* SceneDelegate.swift */,
 				E4D5F5252A008F640025C42A /* RoutineAndTodo.swift */,
+				E48E9D7E2A22E8EB00954A6D /* IphoneMain.storyboard */,
 				E4D5F5272A008F640025C42A /* Main.storyboard */,
 				E4D5F52A2A008F660025C42A /* Assets.xcassets */,
 				E4D5F52C2A008F660025C42A /* LaunchScreen.storyboard */,
+				E48E9D802A22E8F600954A6D /* LaunchScreen.storyboard */,
 				E4D5F52F2A008F660025C42A /* Info.plist */,
 				E4D2A22C2A079943006C88BD /* addItemPopupView.swift */,
 				E4D2A2382A0A1202006C88BD /* TabviewController.swift */,
@@ -208,6 +214,8 @@
 				E4D5F52E2A008F660025C42A /* LaunchScreen.storyboard in Resources */,
 				E4D5F52B2A008F660025C42A /* Assets.xcassets in Resources */,
 				E4D5F5292A008F640025C42A /* Main.storyboard in Resources */,
+				E48E9D812A22E8F600954A6D /* LaunchScreen.storyboard in Resources */,
+				E48E9D7F2A22E8EB00954A6D /* IphoneMain.storyboard in Resources */,
 				E49AEDB82A00D6440083DE42 /* unCheck.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

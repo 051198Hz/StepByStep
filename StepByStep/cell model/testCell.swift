@@ -9,6 +9,7 @@ import UIKit
 
 class testCell: UITableViewCell {
 
+    @IBOutlet var insideBox: UIView!
     @IBOutlet var delCehckBox: CheckBox!
     
     @IBOutlet var nameLabel: UILabel!
@@ -20,12 +21,13 @@ class testCell: UITableViewCell {
         delCehckBox.isChecked = false
         delCehckBox.isHidden = true
         // Initialization code
+        insideBox.layer.cornerRadius = 12
     }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top:16, left: 0, bottom: 16, right: 0))
     }
     
 
