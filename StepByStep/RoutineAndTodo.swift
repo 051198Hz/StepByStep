@@ -528,7 +528,7 @@ class RoutineAndTodo: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func itemDoSuccess(){
-        openCam()
+        //openCam()
     }
     func itemDoFailed( _ cell : testCell){
         

@@ -138,24 +138,24 @@
                                 <rect key="frame" x="676" y="131" width="480" height="624"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="testCell" rowHeight="92" id="pch-Ci-wtG" customClass="testCell" customModule="StepByStep" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="480" height="92"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="testCell" rowHeight="103" id="pch-Ci-wtG" customClass="testCell" customModule="StepByStep" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="480" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pch-Ci-wtG" id="x8r-Z5-wzI">
-                                            <rect key="frame" x="0.0" y="0.0" width="480" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="480" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ady-5H-YYc">
-                                                    <rect key="frame" x="0.0" y="10" width="480" height="72"/>
+                                                    <rect key="frame" x="0.0" y="10" width="480" height="83"/>
                                                     <subviews>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-Hp-SFm">
-                                                            <rect key="frame" x="415.5" y="20.5" width="51" height="31"/>
+                                                            <rect key="frame" x="415.5" y="26" width="51" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="2kQ-Hp-SFm" secondAttribute="height" multiplier="49:31" id="Lxq-Fe-g6E"/>
                                                             </constraints>
                                                         </switch>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTD-lo-XQf" customClass="CheckBox" customModule="StepByStep" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="20.5" width="30" height="31"/>
+                                                            <rect key="frame" x="0.0" y="26" width="30" height="31"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="30" id="9ox-DU-bqZ"/>
                                                                 <constraint firstAttribute="height" constant="31" id="LI3-9a-z5C"/>
@@ -164,7 +164,7 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-kD-BDU">
-                                                            <rect key="frame" x="40" y="10" width="375.5" height="52"/>
+                                                            <rect key="frame" x="40" y="10" width="375.5" height="63"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dez-P6-zQZ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375.5" height="20.5"/>
@@ -179,7 +179,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jH-49-KLt">
-                                                                    <rect key="frame" x="0.0" y="45" width="375.5" height="7"/>
+                                                                    <rect key="frame" x="0.0" y="45" width="375.5" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
